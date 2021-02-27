@@ -1,0 +1,18 @@
+version: "3.7"
+services: 
+  web: 
+    image: node
+    depends_on: 
+      - db
+    ports: 
+      - '3001:3001'
+  db: 
+    image: postgres
+    environment: 
+      POSTGRES_PASSWORD: 123123123
+      POSTGRES_USER: yakym
+      POSTGRES_DB: jwt
+    volumes: 
+      - ./pgdata:/var/lib/postgresql/data
+    ports: 
+      - '5433:5433'

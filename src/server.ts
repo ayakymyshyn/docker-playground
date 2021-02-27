@@ -13,7 +13,15 @@ import { handleRefreshToken } from './controllers/main';
 	const app = express();
 	app.use(cors());
 	app.use(cookieParser());
-	await createConnection();
+
+	let tries = 5;
+	try {
+		await createConnection();
+	} catch(error) {
+		tries -= 1;
+		console.log(`tries left: ${tries}`);
+		await new Promise((res) => setTimeout(res, 5000))
+	}
 
 	app.get('/', (_req, res, _next) => {
 		res.send('hellooooooooo there! Open the /graphql route for more');
