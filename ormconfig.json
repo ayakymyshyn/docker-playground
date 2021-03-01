@@ -1,20 +1,20 @@
 {
 	"type": "postgres",
-	"host": "localhost",
-	"port": 5433,
+	"host": "db",
+	"port": 5432,
 	"username": "yakym",
 	"password": "123123123",
-	"database": "auth",
+	"database": "jwt",
 	"synchronize": true,
 	"logging": false,
 	"entities": [
-		"src/entity/**/*.ts"
+		"src/entity/**/*"
 	],
 	"migrations": [
-		"src/migration/**/*.ts"
+		"src/migration/**/*"
 	],
 	"subscribers": [
-		"src/subscriber/**/*.ts"
+		"src/subscriber/**/*"
 	],
 	"cli": {
 		"entitiesDir": "src/entity",

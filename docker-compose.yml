@@ -1,7 +1,7 @@
 version: "3.7"
 services: 
   web: 
-    image: yakym/express-jwt:express-jwt
+    image: yakym/express-jwt:latest
     depends_on: 
       - db
     ports: 
@@ -12,7 +12,8 @@ services:
       POSTGRES_PASSWORD: 123123123
       POSTGRES_USER: yakym
       POSTGRES_DB: jwt
+
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
     ports: 
-      - '5433:5433'
+      - '5433:5432'

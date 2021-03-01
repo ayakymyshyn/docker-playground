@@ -15,13 +15,17 @@ import { handleRefreshToken } from './controllers/main';
 	app.use(cookieParser());
 
 	let tries = 5;
-	try {
-		await createConnection();
-	} catch(error) {
-		tries -= 1;
-		console.log(`tries left: ${tries}`);
-		await new Promise((res) => setTimeout(res, 5000))
+	while (tries !== 0) {
+			try {
+			await createConnection();
+			console.log('Connection established')
+		} catch(error) {
+			tries -= 1;
+			console.log(`tries left: ${tries}`);
+			await new Promise((res) => setTimeout(res, 5000))
+		}
 	}
+	
 
 	app.get('/', (_req, res, _next) => {
 		res.send('hellooooooooo there! Open the /graphql route for more');
